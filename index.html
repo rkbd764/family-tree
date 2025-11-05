@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>পরিবার বৃক্ষ</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1>পরিবার বৃক্ষ</h1>
+
+  <!-- সার্চ -->
+  <input type="text" id="search" placeholder="নাম, মোবাইল, ইমেইল সার্চ করুন">
+
+  <!-- ফ্যামিলি ট্রি রেন্ডার -->
+  <div id="tree"></div>
+
+  <!-- নতুন সদস্য যোগ করার ফর্ম -->
+  <form id="add-member-form">
+    <h2>নতুন সদস্য যোগ করুন</h2>
+
+    <label for="name">নাম (বাংলা auto typing):</label>
+    <input type="text" id="name" placeholder="amar → আমার" required>
+
+    <label for="father">পিতার নাম:</label>
+    <input type="text" id="father" placeholder="বাছাই করুন">
+
+    <label for="mother">মাতার নাম:</label>
+    <input type="text" id="mother" placeholder="বাছাই করুন">
+
+    <label for="mobile">মোবাইল নাম্বার:</label>
+    <input type="text" id="mobile" placeholder="017xxxxxxxx">
+
+    <label for="email">ইমেইল:</label>
+    <input type="email" id="email" placeholder="example@gmail.com">
+
+    <label for="facebook">Facebook ID:</label>
+    <input type="text" id="facebook" placeholder="https://www.facebook.com/...">
+
+    <label for="remark">Remark (150 অক্ষরের মধ্যে, auto Bangla typing):</label>
+    <textarea id="remark" maxlength="150"></textarea>
+
+    <button type="submit">সাবমিট</button>
+  </form>
+
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/tree.js"></script>
+</body>
+</html>

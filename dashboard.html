@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-left">অ্যাডমিন ড্যাশবোর্ড</div>
+    <div class="header-right">
+      <button id="logoutBtn">Logout</button>
+    </div>
+  </header>
+
+  <!-- Add Member Form -->
+  <section class="form-section">
+    <form id="memberForm">
+      <label>নাম:</label>
+      <input type="text" id="name" placeholder="নাম লিখুন" required>
+
+      <label>পিতার নাম:</label>
+      <input type="text" id="father" placeholder="পিতার নাম বাছাই করুন">
+
+      <label>মাতার নাম:</label>
+      <input type="text" id="mother" placeholder="মাতার নাম বাছাই করুন">
+
+      <label>মোবাইল:</label>
+      <input type="text" id="mobile" placeholder="মোবাইল নাম্বার">
+
+      <label>ইমেইল:</label>
+      <input type="email" id="email" placeholder="ইমেইল">
+
+      <label>ফেসবুক আইডি:</label>
+      <input type="text" id="facebook" placeholder="Facebook ID">
+
+      <label>Remark:</label>
+      <textarea id="remark" maxlength="150" placeholder="Remark (বাংলা লেখা সম্ভব)"></textarea>
+
+      <button type="submit">নতুন সদস্য যোগ করুন</button>
+    </form>
+  </section>
+
+  <!-- Family Tree -->
+  <section class="tree-section">
+    <input type="text" id="search" placeholder="নাম, মোবাইল, ইমেইল সার্চ করুন">
+    <div id="tree"></div>
+  </section>
+
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>
