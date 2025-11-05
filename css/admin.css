@@ -1,0 +1,85 @@
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+}
+
+header .header-right button {
+  background-color: #DC3545;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Login */
+.login-container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.login-container input {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+}
+
+.password-wrapper {
+  display: flex;
+}
+
+.password-wrapper input {
+  flex: 1;
+}
+
+.password-wrapper button {
+  margin-left: 5px;
+}
+
+/* Form */
+.form-section {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.form-section form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-section input, .form-section textarea {
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.form-section button {
+  width: 200px;
+  background-color: #28A745;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Tree */
+.tree-section {
+  max-width: 900px;
+  margin: 20px auto;
+}
+
+.tree-node {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}

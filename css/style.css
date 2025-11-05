@@ -1,0 +1,84 @@
+/* ====== General Body Styling ====== */
+body {
+    font-family: 'Noto Sans Bengali', sans-serif;
+    background-color: #f4f7fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* ====== Heading ====== */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 30px;
+}
+
+/* ====== Search Box ====== */
+#search {
+    display: block;
+    margin: 20px auto;
+    width: 300px;
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* ====== Tree Container ====== */
+#tree {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* ====== Tree Nodes ====== */
+.node {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    min-width: 120px;
+}
+
+/* ====== Children Container (Collapsible) ====== */
+.children {
+    display: none;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* ====== Node Hover Effect ====== */
+.node:hover {
+    background-color: #2980b9;
+}
+
+/* ====== Lines connecting nodes ====== */
+.node::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background: #34495e;
+}
+
+.children::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background: #34495e;
+}
+
+/* ====== Collapsed Node ====== */
+.node.collapsed::after {
+    display: none;
+}
