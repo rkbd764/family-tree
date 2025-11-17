@@ -2,47 +2,96 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
-  <title>পরিবার বৃক্ষ</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>মোড়ল পরিবার বৃক্ষ</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>পরিবার বৃক্ষ</h1>
+  <div class="container">
+    <h1 class="title">মোড়ল পরিবার বৃক্ষ</h1>
 
-  <!-- সার্চ -->
-  <input type="text" id="search" placeholder="নাম, মোবাইল, ইমেইল সার্চ করুন">
+    <!-- 🔍 সার্চ বক্স (Bangla Phonetic Supported) -->
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="নাম বা মোবাইল লিখুন...">
+      <button onclick="searchTree()">Search</button>
+    </div>
 
-  <!-- ফ্যামিলি ট্রি রেন্ডার -->
-  <div id="tree"></div>
+    <!-- 📌 পরিবার বৃক্ষ -->
+    <div id="treeContainer" class="tree">
+      <ul>
+        <li>
+          <div class="member" data-name="মরহুম লুদই মোড়ল" data-relation="পিতা" data-mobile="">
+            <img src="images/om.jpg" alt="মরহুম লুদই মোড়ল">
+            <span>মরহুম লুদই মোড়ল</span>
+          </div>
 
-  <!-- নতুন সদস্য যোগ করার ফর্ম -->
-  <form id="add-member-form">
-    <h2>নতুন সদস্য যোগ করুন</h2>
+          <ul>
+            <li>
+              <div class="member" data-name="মরহুম ইসমাইল মোড়ল" data-relation="পুত্র" data-mobile="">
+                <img src="images/om.jpg" alt="মরহুম ইসমাইল মোড়ল">
+                <span>মরহুম ইসমাইল মোড়ল</span>
+              </div>
 
-    <label for="name">নাম (বাংলা auto typing):</label>
-    <input type="text" id="name" placeholder="amar → আমার" required>
+              <ul>
+                <li>
+                  <div class="member" data-name="মরহুম রোস্তম আলী মন্ডল" data-relation="পুত্র" data-mobile="">
+                    <img src="images/om.jpg" alt="মরহুম রোস্তম আলী মন্ডল">
+                    <span>মরহুম রোস্তম আলী মন্ডল</span>
+                  </div>
+                </li>
 
-    <label for="father">পিতার নাম:</label>
-    <input type="text" id="father" placeholder="বাছাই করুন">
+                <li>
+                  <div class="member" data-name="মরহুম হুরমত আলী মন্ডল" data-relation="পুত্র" data-mobile="">
+                    <img src="images/om.jpg" alt="মরহুম হুরমত আলী মন্ডল">
+                    <span>মরহুম হুরমত আলী মন্ডল</span>
+                  </div>
+                </li>
 
-    <label for="mother">মাতার নাম:</label>
-    <input type="text" id="mother" placeholder="বাছাই করুন">
+                <li>
+                  <div class="member" data-name="মরহুম হাসমত আলী মন্ডল" data-relation="পুত্র" data-mobile="">
+                    <img src="images/hasmotali.jpg" alt="মরহুম হাসমত আলী মন্ডল">
+                    <span>মরহুম হাসমত আলী মন্ডল</span>
+                  </div>
+                </li>
 
-    <label for="mobile">মোবাইল নাম্বার:</label>
-    <input type="text" id="mobile" placeholder="017xxxxxxxx">
+                <li>
+                  <div class="member" data-name="মোসা: আলেয়া বেগম" data-relation="কন্যা" data-mobile="">
+                    <img src="images/of.jpg" alt="মোসা: আলেয়া বেগম">
+                    <span>মোসা: আলেয়া বেগম</span>
+                  </div>
+                </li>
 
-    <label for="email">ইমেইল:</label>
-    <input type="email" id="email" placeholder="example@gmail.com">
+                <li>
+                  <div class="member" data-name="মোসা: বালি" data-relation="কন্যা" data-mobile="">
+                    <img src="images/of.jpg" alt="মোসা: বালি">
+                    <span>মোসা: বালি</span>
+                  </div>
+                </li>
 
-    <label for="facebook">Facebook ID:</label>
-    <input type="text" id="facebook" placeholder="https://www.facebook.com/...">
+                <li>
+                  <div class="member" data-name="মোসা: মরিয়ম বেগম" data-relation="কন্যা" data-mobile="">
+                    <img src="images/of.jpg" alt="মোসা: মরিয়ম বেগম">
+                    <span>মোসা: মরিয়ম বেগম</span>
+                  </div>
+                </li>
 
-    <label for="remark">Remark (150 অক্ষরের মধ্যে, auto Bangla typing):</label>
-    <textarea id="remark" maxlength="150"></textarea>
+                <li>
+                  <div class="member" data-name="মোসা: রাবেয়া খাতুন টুক্কুনি" data-relation="কন্যা" data-mobile="">
+                    <img src="images/of.jpg" alt="মোসা: রাবেয়া খাতুন টুক্কুনি">
+                    <span>মোসা: রাবেয়া খাতুন টুক্কুনি</span>
+                  </div>
+                </li>
 
-    <button type="submit">সাবমিট</button>
-  </form>
+              </ul>
+            </li>
+          </ul>
 
-  <script type="module" src="js/firebase-config.js"></script>
-  <script type="module" src="js/tree.js"></script>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="transliterate.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

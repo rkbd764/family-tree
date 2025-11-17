@@ -2,20 +2,25 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
-  <title>Admin Login</title>
+  <title>অ্যাডমিন লগইন</title>
   <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
   <div class="login-container">
     <h2>অ্যাডমিন লগইন</h2>
     <form id="loginForm">
-      <label>Username:</label>
-      <input type="text" id="username" placeholder="Username" required>
+      <label>Username / Email:</label>
+      <input type="text" id="username" placeholder="Username / Email" required>
       
       <label>Password:</label>
       <div class="password-wrapper">
         <input type="password" id="password" placeholder="Password" required>
         <button type="button" id="togglePassword">Show</button>
+      </div>
+
+      <div class="remember-me">
+        <input type="checkbox" id="rememberMe">
+        <label for="rememberMe">Remember Me</label>
       </div>
       
       <button type="submit">Login</button>

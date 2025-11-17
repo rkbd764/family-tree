@@ -1,0 +1,136 @@
+/* Google Bengali Font (Optional but Recommended) */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap');
+
+body {
+  font-family: 'Noto Sans Bengali', sans-serif;
+  background: linear-gradient(to bottom right, #eef4f7;)
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 25px;
+  color: #2c3e50;
+  font-weight: 700;
+}
+
+/* Search Box Center */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.search-bar input {
+  padding: 10px;
+  font-size: 1rem;
+  width: 260px;
+  border-radius: 6px;
+  border: 1px solid #b2bec3;
+  outline: none;
+}
+
+.search-bar button {
+  padding: 10px 15px;
+  margin-left: 5px;
+  font-size: 1rem;
+  border: none;
+  background: #3498db;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search-bar button:hover {
+  background: #217dbb;
+}
+
+/* TREE STRUCTURE */
+.tree ul {
+  padding-top: 25px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+  .tree li {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    padding: 20px 5px 0 5px;
+}
+
+/* Vertical Line */
+.tree li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 2px solid #3498db;
+  height: 25px;
+}
+
+/* Horizontal Line connecting siblings */
+.tree li::after {
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: -20px;
+  right: -20px;
+  border-top: 2px solid #3498db;
+}
+
+/* Remove lines when single child */
+.tree li:only-child::after,
+.tree li:only-child::before {
+  display: none;
+}
+
+/* MEMBER CARD */
+  .member {
+    border: 2px solid #81c784;
+    border-radius: 12px;
+    background: white;
+    color: #1b5e20;
+    font-weight: bold;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    padding: 8px;
+    width: 120px;
+  }
+
+.member:hover {
+  transform: scale(1.05);
+  border-color: #1d6fa5;
+}
+
+/* Profile Photos */
+.member img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 6px;
+  border: 2px solid #2980b9;
+}
+
+/* Highlighted Search Match */
+.member.highlight {
+  background: #f1c40f;
+  border-color: #d35400;
+}
+
+/* Hide children initially */
+.tree ul ul {
+  display: none;
+}

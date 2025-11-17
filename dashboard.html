@@ -2,52 +2,89 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
-  <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="css/admin.css">
+  <title>পরিবার ব্যবস্থাপনা প্যানেল</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <script type="module" src="js/dashboard.js"></script>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="header-left">অ্যাডমিন ড্যাশবোর্ড</div>
-    <div class="header-right">
-      <button id="logoutBtn">Logout</button>
-    </div>
-  </header>
 
-  <!-- Add Member Form -->
-  <section class="form-section">
-    <form id="memberForm">
-      <label>নাম:</label>
-      <input type="text" id="name" placeholder="নাম লিখুন" required>
+<div class="dashboard">
 
-      <label>পিতার নাম:</label>
-      <input type="text" id="father" placeholder="পিতার নাম বাছাই করুন">
+  <aside class="sidebar">
+    <h2>⚙️ অ্যাডমিন প্যানেল</h2>
+    <ul>
+      <li class="active" data-section="addMember">নতুন সদস্য যুক্ত করুন</li>
+      <li data-section="memberList">পরিবার সদস্য তালিকা</li>
+      <li id="logoutBtn">🚪 লগআউট</li>
+    </ul>
+  </aside>
 
-      <label>মাতার নাম:</label>
-      <input type="text" id="mother" placeholder="মাতার নাম বাছাই করুন">
+  <main class="content">
 
-      <label>মোবাইল:</label>
-      <input type="text" id="mobile" placeholder="মোবাইল নাম্বার">
+    <!-- Add Member Form -->
+    <section id="addMember" class="section">
+      <h2>নতুন সদস্য যুক্ত করুন</h2>
 
-      <label>ইমেইল:</label>
-      <input type="email" id="email" placeholder="ইমেইল">
+      <form id="memberForm">
 
-      <label>ফেসবুক আইডি:</label>
-      <input type="text" id="facebook" placeholder="Facebook ID">
+        <label>সম্পূর্ণ নাম *</label>
+        <input type="text" id="name" required>
 
-      <label>Remark:</label>
-      <textarea id="remark" maxlength="150" placeholder="Remark (বাংলা লেখা সম্ভব)"></textarea>
+        <label>পিতার নাম (অথবা) মাতার নাম *</label>
+        <input type="text" id="father">
+        <input type="text" id="mother">
 
-      <button type="submit">নতুন সদস্য যোগ করুন</button>
-    </form>
-  </section>
+        <label>ঠিকানা</label>
+        <input type="text" id="address">
 
-  <!-- Family Tree -->
-  <section class="tree-section">
-    <input type="text" id="search" placeholder="নাম, মোবাইল, ইমেইল সার্চ করুন">
-    <div id="tree"></div>
-  </section>
+        <label>মোবাইল নাম্বার</label>
+        <input type="text" id="phone">
 
-  <script type="module" src="js/dashboard.js"></script>
+        <label>জাতীয় পরিচয়পত্র / জন্ম নিবন্ধন</label>
+        <input type="text" id="nid">
+
+        <label>ফেসবুক আইডি লিংক</label>
+        <input type="text" id="facebook">
+
+        <label>ইমেইল আইডি</label>
+        <input type="email" id="email">
+
+        <label>ছবি আপলোড করুন</label>
+        <input type="file" id="photo" accept="image/*">
+
+        <label>রিমার্ক (১৫০ অক্ষর)</label>
+        <textarea id="remark" maxlength="150"></textarea>
+
+        <button type="submit">✅ সংরক্ষণ করুন</button>
+
+      </form>
+    </section>
+
+    <!-- Member List -->
+    <section id="memberList" class="section hidden">
+      <h2>পরিবার সদস্য তালিকা</h2>
+
+      <input type="text" id="searchMember" placeholder="নাম / মোবাইল / আইডি দিয়ে সার্চ করুন...">
+
+      <table id="memberTable">
+        <thead>
+          <tr>
+            <th>নাম</th>
+            <th>পিতা/মাতা</th>
+            <th>মোবাইল</th>
+            <th>ছবি</th>
+            <th>এডিট</th>
+            <th>ডিলিট</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+    </section>
+
+  </main>
+
+</div>
+
 </body>
 </html>
