@@ -1,71 +1,78 @@
-import { getFamilyTree } from './firebase-config.js';
+import { db } from "./firebase-config.js";
+import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import transliterate from "./transliterate.js";
 
-const treeContainer = document.getElementById('tree');
-const searchInput = document.getElementById('search');
+// 🔹 Load New Members from Firebase
+async function loadNewMembers() {
+  try {
+    const snapshot = await getDocs(collection(db, "Morols family tree"));
+    const members = snapshot.docs.map(doc => doc.data());
 
-let familyData = [];
+    const treeContainer = document.getElementById("treeContainer");
+    const mainUL = treeContainer.querySelector("ul");
 
-// ====== Fetch Family Tree Data ======
-getFamilyTree().then(data => {
-    familyData = data;
-    renderTree(familyData, treeContainer);
-});
+    members.forEach(member => {
+      // আগের ট্রিতে যদি member থাকে, skip করুন
+      if (document.querySelector(`.member[data-name="${member.name}"]`)) return;
 
-// ====== Render Tree Function ======
-function renderTree(data, container) {
-    container.innerHTML = '';
+      // নতুন <li> তৈরি করুন
+      const li = document.createElement("li");
+      const div = document.createElement("div");
+      div.classList.add("member");
+      div.dataset.name = member.name;
+      div.dataset.mobile = member.phone || "";
 
-    const createNode = (member) => {
-        const node = document.createElement('div');
-        node.classList.add('node');
-        node.textContent = member.name;
+      const img = document.createElement("img");
+      img.src = member.picture || "images/om.jpg";
+      img.alt = member.name;
 
-        // Click to toggle children
-        node.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (member.children && member.children.length) {
-                childrenDiv.style.display = childrenDiv.style.display === 'flex' ? 'none' : 'flex';
-            }
-        });
+      const span = document.createElement("span");
+      span.textContent = member.name;
 
-        let childrenDiv = document.createElement('div');
-        childrenDiv.classList.add('children');
+      div.appendChild(img);
+      div.appendChild(span);
+      li.appendChild(div);
 
-        if (member.children && member.children.length) {
-            member.children.forEach(child => {
-                childrenDiv.appendChild(createNode(child));
-            });
-        }
-
-        const wrapper = document.createElement('div');
-        wrapper.appendChild(node);
-        wrapper.appendChild(childrenDiv);
-
-        return wrapper;
-    };
-
-    // Top-level nodes
-    data.forEach(member => {
-        container.appendChild(createNode(member));
+      mainUL.appendChild(li); // মূল UL-তে append করুন
     });
+
+  } catch (error) {
+    console.error("Failed to load members:", error);
+  }
 }
 
-// ====== Search Functionality ======
-searchInput.addEventListener('input', () => {
-    const query = searchInput.value.toLowerCase();
-    const filtered = familyData.filter(member => filterMember(member, query));
-    renderTree(filtered, treeContainer);
-});
+// 🔹 Search Function
+function searchTree() {
+  const searchInput = document.getElementById("searchInput").value;
+  const tQuery = transliterate(searchInput).toLowerCase();
+  const members = document.querySelectorAll(".member");
 
-// ====== Recursive search ======
-function filterMember(member, query) {
-    if (member.name.toLowerCase().includes(query) ||
-        (member.mobile && member.mobile.includes(query)) ||
-        (member.email && member.email.toLowerCase().includes(query))) {
-        return true;
+  let found = false;
+
+  members.forEach(member => {
+    member.classList.remove("highlight");
+
+    if (
+      member.dataset.name.toLowerCase().includes(tQuery) ||
+      (member.dataset.mobile && member.dataset.mobile.includes(tQuery))
+    ) {
+      member.classList.add("highlight");
+      found = true;
+
+      // Collapsible parent খুলুন
+      let parent = member.parentElement;
+      while (parent && parent.id !== "treeContainer") {
+        if (parent.tagName === "UL") parent.style.display = "block";
+        parent = parent.parentElement;
+      }
     }
-    if (member.children) {
-        return member.children.some(child => filterMember(child, query));
-    }
-    return false;
+  });
+
+  if (!found) alert("দুঃখিত এই নামে অত্র পরিবার বৃক্ষে কাউকে খুঁজে পাওয়া যায়নি");
 }
+
+// 🔹 Initial Load
+loadNewMembers();
+
+// Make searchTree global so button onclick works
+window.searchTree = searchTree;
