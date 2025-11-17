@@ -1,0 +1,185 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans Bengali", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #d3f7d8, #b5f4c2, #a0f0d2);
+  backdrop-filter: blur(5px);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+/* DASHBOARD LAYOUT */
+.dashboard {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 260px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 20px rgba(0,0,0,0.15);
+  padding: 30px 20px;
+  border-radius: 0 20px 20px 0;
+}
+
+.sidebar h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ffffff80;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  padding: 14px 18px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.sidebar ul li:hover,
+.sidebar ul li.active {
+  background: rgba(0, 90, 30, 0.2);
+  font-weight: 600;
+}
+
+/* CONTENT AREA */
+.content {
+  flex: 1;
+  padding: 30px;
+}
+
+/* SECTIONS */
+.section {
+  display: block;
+  animation: fade 0.4s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* FORM STYLE */
+form {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(15px);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.12);
+  max-width: 600px;
+}
+
+form label {
+  font-size: 15px;
+  margin-top: 10px;
+  display: block;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 10px 14px;
+  margin-top: 5px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: 1px solid #9cd3a6;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
+}
+
+form button {
+  width: 100%;
+  padding: 12px;
+  background: #2b8a42;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  margin-top: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+form button:hover {
+  background: #176b2c;
+}
+
+/* TABLE STYLE */
+#memberList {
+  width: 100%;
+}
+
+#memberTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  text-align: center;
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(12px);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+#memberTable th, #memberTable td {
+  padding: 10px;
+  border-bottom: 1px solid #cee9d1;
+}
+
+#memberTable tr:hover {
+  background: rgba(0, 90, 30, 0.12);
+  transition: 0.3s;
+}
+
+/* SEARCH */
+#searchMember {
+  width: 300px;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid #9cd3a6;
+  background: rgba(255,255,255,0.55);
+}
+
+/* MOBILE RESPONSIVE */
+@media(max-width: 768px) {
+  .dashboard {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    border-radius: 0;
+    display: flex;
+  }
+  .sidebar ul {
+    display: flex;
+    gap: 8px;
+  }
+  .content {
+    padding: 15px;
+  }
+  form {
+    width: 100%;
+  }
+}

@@ -1,4 +1,3 @@
-/* ====== General Body Styling ====== */
 body {
     font-family: 'Noto Sans Bengali', sans-serif;
     background-color: #f4f7fa;
@@ -6,14 +5,12 @@ body {
     padding: 0;
 }
 
-/* ====== Heading ====== */
 h1 {
     text-align: center;
     color: #2c3e50;
     margin-top: 30px;
 }
 
-/* ====== Search Box ====== */
 #search {
     display: block;
     margin: 20px auto;
@@ -24,14 +21,14 @@ h1 {
     font-size: 16px;
 }
 
-/* ====== Tree Container ====== */
 #tree {
     display: flex;
     justify-content: center;
     margin-top: 30px;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* ====== Tree Nodes ====== */
 .node {
     background-color: #3498db;
     color: #fff;
@@ -44,20 +41,18 @@ h1 {
     min-width: 120px;
 }
 
-/* ====== Children Container (Collapsible) ====== */
-.children {
-    display: none;
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-}
-
-/* ====== Node Hover Effect ====== */
 .node:hover {
     background-color: #2980b9;
 }
 
-/* ====== Lines connecting nodes ====== */
+.children {
+    display: none;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .node::after {
     content: '';
     position: absolute;
@@ -78,7 +73,6 @@ h1 {
     background: #34495e;
 }
 
-/* ====== Collapsed Node ====== */
 .node.collapsed::after {
     display: none;
 }
