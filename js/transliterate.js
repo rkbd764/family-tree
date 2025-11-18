@@ -1,26 +1,67 @@
-const banglaMap = {
-    'amar': 'আমার',
-    'baba': 'বাবা',
-    'ma': 'মা',
-    'chhele': 'ছেলে',
-    'meye': 'মেয়ে',
-    'pita': 'পিতা',
-    'mata': 'মাতা',
-    'shishu': 'শিশু'
-};
+// transliterate.js (ES Module)
 
-export function transliterateWord(word) {
-    return banglaMap[word.toLowerCase()] || word;
-}
+export default function transliterate(input) {
+    if (!input) return "";
 
-export function handleAutoBanglaTyping(inputElement) {
-    inputElement.addEventListener('keyup', (e) => {
-        if (e.key === ' ' || e.key === 'Enter') {
-            const words = inputElement.value.split(' ');
-            if (words.length >= 2) {
-                words[words.length - 2] = transliterateWord(words[words.length - 2]);
-                inputElement.value = words.join(' ');
-            }
-        }
+    input = input.toLowerCase();
+
+    const map = {
+        "kh": "খ",
+        "gh": "ঘ",
+        "ch": "ছ",
+        "jh": "ঝ",
+        "th": "থ",
+        "dh": "ধ",
+        "ph": "ফ",
+        "bh": "ভ",
+        "sh": "শ",
+        "ss": "ষ",
+        "ng": "ঙ",
+        "ny": "ঞ",
+
+        "a": "া",
+        "i": "ি",
+        "u": "ু",
+        "e": "ে",
+        "o": "ো",
+        "aa": "া",
+        "ee": "ী",
+        "oo": "ূ",
+
+        "k": "ক",
+        "g": "গ",
+        "c": "চ",
+        "j": "জ",
+        "t": "ত",
+        "d": "দ",
+        "n": "ন",
+        "p": "প",
+        "b": "ব",
+        "m": "ম",
+        "y": "য",
+        "r": "র",
+        "l": "ল",
+        "s": "স",
+        "h": "হ",
+
+        "q": "ক",
+        "v": "ভ",
+        "x": "ক্স",
+
+        "t": "ট",
+        "d": "ড",
+        "n": "ণ"
+    };
+
+    let result = input;
+
+    // Sort keys by length to convert "kh" before "k"
+    const keys = Object.keys(map).sort((a, b) => b.length - a.length);
+
+    keys.forEach(key => {
+        const regex = new RegExp(key, "g");
+        result = result.replace(regex, map[key]);
     });
+
+    return result;
 }
