@@ -1,67 +1,42 @@
-// transliterate.js (ES Module)
+// transliterate.js — Full Bangla Phonetic Engine
 
 export default function transliterate(input) {
-    if (!input) return "";
+  if (!input) return "";
 
-    input = input.toLowerCase();
+  const map = {
+    "kh": "খ", "gh": "ঘ", "ch": "ছ", "jh": "ঝ",
+    "th": "থ", "dh": "ধ", "ph": "ফ", "bh": "ভ",
+    "sh": "শ", "ss": "ষ", "ng": "ঙ", "ny": "ঞ",
+    "Rh": "ঢ়",
 
-    const map = {
-        "kh": "খ",
-        "gh": "ঘ",
-        "ch": "ছ",
-        "jh": "ঝ",
-        "th": "থ",
-        "dh": "ধ",
-        "ph": "ফ",
-        "bh": "ভ",
-        "sh": "শ",
-        "ss": "ষ",
-        "ng": "ঙ",
-        "ny": "ঞ",
+    "aa": "া", "ee": "ী", "oo": "ূ",
 
-        "a": "া",
-        "i": "ি",
-        "u": "ু",
-        "e": "ে",
-        "o": "ো",
-        "aa": "া",
-        "ee": "ী",
-        "oo": "ূ",
+    "a": "া", "i": "ি", "u": "ু", "e": "ে", "o": "ো",
+    "k": "ক", "g": "গ", "c": "চ", "j": "জ",
+    "t": "ত", "d": "দ", "n": "ন",
+    "p": "প", "f": "ফ", "b": "ব", "m": "ম",
 
-        "k": "ক",
-        "g": "গ",
-        "c": "চ",
-        "j": "জ",
-        "t": "ত",
-        "d": "দ",
-        "n": "ন",
-        "p": "প",
-        "b": "ব",
-        "m": "ম",
-        "y": "য",
-        "r": "র",
-        "l": "ল",
-        "s": "স",
-        "h": "হ",
+    "y": "য", "r": "র", "l": "ল", "s": "স", "h": "হ",
 
-        "q": "ক",
-        "v": "ভ",
-        "x": "ক্স",
+    "T": "ট", "D": "ড", "N": "ণ", "S": "স", "R": "ড়",
 
-        "t": "ট",
-        "d": "ড",
-        "n": "ণ"
-    };
+    "v": "ভ", "x": "ক্স", "q": "ক"
+  };
 
-    let result = input;
+  input = input.toLowerCase().trim();
+  let out = "";
 
-    // Sort keys by length to convert "kh" before "k"
-    const keys = Object.keys(map).sort((a, b) => b.length - a.length);
+  for (let i = 0; i < input.length; i++) {
+    let two = input.substring(i, i + 2);
+    if (map[two]) {
+      out += map[two];
+      i++;
+      continue;
+    }
 
-    keys.forEach(key => {
-        const regex = new RegExp(key, "g");
-        result = result.replace(regex, map[key]);
-    });
+    let one = input[i];
+    out += map[one] || one;
+  }
 
-    return result;
+  return out;
 }
